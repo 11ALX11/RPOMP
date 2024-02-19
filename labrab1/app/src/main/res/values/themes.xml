@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.Labrab1" parent="Base.Theme.Labrab1" />
+
+    <style name="ThemeOverlay.Labrab1.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
 </resources>

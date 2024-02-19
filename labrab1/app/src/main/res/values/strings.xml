@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">labrab1</string>
+    <string name="app_name">Labrab1</string>
+    <string name="lab_theme">Misijuk\'s Sensors</string>
+    <string name="sensors_accelerator_title">Accelerator</string>
+    <string name="sensors_orientation_title">Orientation</string>
+    <string name="btn_back">Back</string>
+    <!-- Strings used for fragments for navigation -->
+
 </resources>
