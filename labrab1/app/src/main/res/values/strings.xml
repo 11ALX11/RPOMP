@@ -1,5 +1,5 @@
-<resources>
-    <string name="app_name">Labrab1</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="Typos">Labrab1</string>
     <string name="lab_theme">Misijuk\'s Sensors</string>
     <string name="sensors_accelerator_title">Accelerator</string>
     <string name="sensors_orientation_title">Orientation</string>

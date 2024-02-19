@@ -44,12 +44,9 @@ public class SensorOrientationActivity extends AppCompatActivity {
 
         // button4 onClick -> return to main activity
         Button button = findViewById(R.id.button4);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SensorOrientationActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(SensorOrientationActivity.this, MainActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -63,13 +60,10 @@ public class SensorOrientationActivity extends AppCompatActivity {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        getDeviceOrientation();
-                        getActualDeviceOrientation();
-                        showInfo();
-                    }
+                runOnUiThread(() -> {
+                    getDeviceOrientation();
+                    getActualDeviceOrientation();
+                    showInfo();
                 });
             }
         };
@@ -88,7 +82,7 @@ public class SensorOrientationActivity extends AppCompatActivity {
         timer.cancel();
     }
 
-    String format(float values[]) {
+    String format(float[] values) {
         return String.format("%1$.1f\t\t%2$.1f\t\t%3$.1f", values[0], values[1], values[2]);
     }
 
@@ -109,7 +103,6 @@ public class SensorOrientationActivity extends AppCompatActivity {
         valuesResult[0] = (float) Math.toDegrees(valuesResult[0]);
         valuesResult[1] = (float) Math.toDegrees(valuesResult[1]);
         valuesResult[2] = (float) Math.toDegrees(valuesResult[2]);
-        return;
     }
 
     float[] inR = new float[9];
@@ -139,7 +132,6 @@ public class SensorOrientationActivity extends AppCompatActivity {
         valuesResult2[0] = (float) Math.toDegrees(valuesResult2[0]);
         valuesResult2[1] = (float) Math.toDegrees(valuesResult2[1]);
         valuesResult2[2] = (float) Math.toDegrees(valuesResult2[2]);
-        return;
     }
 
     float[] valuesAccel = new float[3];

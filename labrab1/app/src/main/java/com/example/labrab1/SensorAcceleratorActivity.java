@@ -41,12 +41,9 @@ public class SensorAcceleratorActivity extends AppCompatActivity {
 
         // btn onClick -> return to main activity
         Button button = findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SensorAcceleratorActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(SensorAcceleratorActivity.this, MainActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -64,12 +61,7 @@ public class SensorAcceleratorActivity extends AppCompatActivity {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        showInfo();
-                    }
-                });
+                runOnUiThread(() -> showInfo());
             }
         };
         timer.schedule(task, 0, 400);
