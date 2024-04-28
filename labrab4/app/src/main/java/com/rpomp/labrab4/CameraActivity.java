@@ -185,11 +185,13 @@ public class CameraActivity extends AppCompatActivity {
             currentY = event.getY();
 
             switch (event.getAction()) {
-//                case MotionEvent.ACTION_DOWN:
-//                    previousX = currentX;
-//                    previousY = currentY;
-//                    break;
+                case MotionEvent.ACTION_DOWN:
+                    previousX = currentX;
+                    previousY = currentY;
+                    break;
                 case MotionEvent.ACTION_UP:
+                    currentX = event.getX();
+                    currentY = event.getY();
                     invalidate(); // Перерисовываем представление после рисования линии
                     break;
             }

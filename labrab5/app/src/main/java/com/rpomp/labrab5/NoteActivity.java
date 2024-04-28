@@ -20,6 +20,9 @@ public class NoteActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayAdapter<String> adapter;
     private List<String> notes;
+    private int noteNum = 4;
+    private long selectedPosition = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,7 @@ public class NoteActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedPosition = id;
                 String selectedNote = notes.get(position);
                 Toast.makeText(NoteActivity.this, "Выбрана заметка: " + selectedNote, Toast.LENGTH_SHORT).show();
             }
@@ -72,7 +76,7 @@ public class NoteActivity extends AppCompatActivity {
 
     private void addNote() {
         // Логика добавления новой заметки
-        String newNote = "Новая заметка";
+        String newNote = "Заметка " + noteNum++;
         notes.add(newNote);
         adapter.notifyDataSetChanged();
         Toast.makeText(this, "Добавлена новая заметка", Toast.LENGTH_SHORT).show();
@@ -80,12 +84,13 @@ public class NoteActivity extends AppCompatActivity {
 
     private void deleteNote() {
         // Логика удаления выбранной заметки
-        int selectedPosition = listView.getCheckedItemPosition();
-        if (selectedPosition != ListView.INVALID_POSITION) {
-            String deletedNote = notes.get(selectedPosition);
-            notes.remove(selectedPosition);
+        //int selectedPosition = listView.getCheckedItemPosition();
+        if (selectedPosition >= 0/*!= ListView.INVALID_POSITION*/) {
+            String deletedNote = notes.get((int) selectedPosition);
+            notes.remove(deletedNote);
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Удалена заметка: " + deletedNote, Toast.LENGTH_SHORT).show();
+            selectedPosition = -1;
         } else {
             Toast.makeText(this, "Выберите заметку для удаления", Toast.LENGTH_SHORT).show();
         }
